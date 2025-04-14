@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Site Blocked - Focus Rewards</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #424242;
+    }
+    .container {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      max-width: 600px;
+      text-align: center;
+    }
+    h1 {
+      color: #283593;
+      margin-top: 0;
+      font-size: 28px;
+    }
+    .icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background-color: #283593;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon svg {
+      width: 40px;
+      height: 40px;
+      fill: white;
+    }
+    .site-name {
+      font-weight: bold;
+      color: #283593;
+    }
+    .message {
+      margin: 20px 0;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+    .timer {
+      font-size: 18px;
+      margin: 20px 0;
+      color: #43A047;
+      font-weight: bold;
+    }
+    .button {
+      background-color: #43A047;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .button:hover {
+      background-color: #2E7D32;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #757575;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/>
+      </svg>
+    </div>
+    
+    <h1>Site Blocked</h1>
+    
+    <p class="message">
+      <span id="siteName" class="site-name">This website</span> is currently blocked by Focus Rewards.
+      Stay focused on your study session!
+    </p>
+    
+    <div class="timer" id="sessionTimer">
+      Return to your Focus Rewards session
+    </div>
+    
+    <a href="https://focus-rewards.vercel.app/session" class="button">
+      Return to Focus Session
+    </a>
+    
+    <div class="footer">
+      Focus Rewards - Helping you stay productive
+    </div>
+  </div>
+  
+  <script>
+    // Get the blocked site from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const site = urlParams.get('site');
+    
+    if (site) {
+      document.getElementById('siteName').textContent = site;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Focus Rewards Blocker",
+  "version": "1.0",
+  "description": "Block distracting websites during study sessions with Focus Rewards",
+  "permissions": ["storage", "webNavigation", "tabs"],
+  "host_permissions": ["*://*/*"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "externally_connectable": {
+    "matches": [
+      "http://localhost:*/*",
+      "*://focus-rewards.vercel.app/*"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://localhost:*/*",
+        "*://focus-rewards.vercel.app/*"
+      ],
+      "js": ["content-script.js"],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked.html", "blocked.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+} 
